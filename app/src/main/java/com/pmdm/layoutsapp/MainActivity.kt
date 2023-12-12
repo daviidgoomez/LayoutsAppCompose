@@ -93,7 +93,8 @@ fun MyPreview() {
   //  MyBox()
       //  MyComplexLayout()
 
-        ConstraintExample()
+        //ConstraintExample()
+        ConstraintApp()
 
     }
 }
@@ -189,5 +190,78 @@ fun ConstraintExample(){
                 top.linkTo(boxYellow.bottom)
                 end.linkTo(boxYellow.start)
             })
+    }
+}
+
+@Composable
+fun ConstraintApp() {
+    ConstraintLayout(modifier = Modifier.fillMaxSize()) {
+        val (boxBlack, boxBlue1, boxBlue2, boxBlue3, boxBlue4,
+            boxPurple1, boxPurple2, boxPurple3, boxPurple4) = createRefs()
+
+    Box(modifier = Modifier
+        .size(50.dp)
+        .background(Color.Black)
+        .constrainAs(boxBlack) {
+            top.linkTo(parent.top)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+            bottom.linkTo(parent.bottom)
+        })
+        Box(modifier = Modifier.size(50.dp
+        ).background(Color.Cyan)
+            .constrainAs(boxBlue1) {
+            bottom.linkTo(boxBlack.top)
+                end.linkTo(boxBlack.start)
+        })
+        Box(modifier = Modifier.size(50.dp
+        ).background(Color.Cyan)
+            .constrainAs(boxBlue2) {
+                bottom.linkTo(boxBlack.top)
+                start.linkTo(boxBlack.end)
+            })
+
+        Box(modifier = Modifier.size(50.dp
+        ).background(Color.Cyan)
+            .constrainAs(boxBlue3) {
+                top.linkTo(boxBlack.bottom)
+                end.linkTo(boxBlack.start)
+            })
+
+        Box(modifier = Modifier.size(50.dp
+        ).background(Color.Cyan)
+            .constrainAs(boxBlue4) {
+                top.linkTo(boxBlack.bottom)
+                start.linkTo(boxBlack.end)
+            })
+
+        Box(modifier = Modifier.size(50.dp
+        ).background(Color.Magenta)
+            .constrainAs(boxPurple1) {
+                bottom.linkTo(boxBlue1.top)
+                start.linkTo(boxBlack.start)
+            })
+        Box(modifier = Modifier.size(50.dp
+        ).background(Color.Magenta)
+            .constrainAs(boxPurple2) {
+                top.linkTo(boxBlue3.bottom)
+                start.linkTo(boxBlack.start)
+            })
+
+        Box(modifier = Modifier.size(50.dp
+        ).background(Color.Magenta)
+            .constrainAs(boxPurple3) {
+                top.linkTo(boxBlue3.bottom)
+                end.linkTo(boxBlue3.start)
+            })
+
+        Box(modifier = Modifier.size(50.dp
+        ).background(Color.Magenta)
+            .constrainAs(boxPurple4) {
+                top.linkTo(boxBlue4.bottom)
+                start.linkTo(boxBlue4.end)
+            })
+
+
     }
 }
